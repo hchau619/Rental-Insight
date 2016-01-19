@@ -1,0 +1,13 @@
+{
+  "name": "crimedata",
+  "version": "1.0.0",
+  "description": "Part of the RentalInsight app responsible for collecting crime data.",
+  "dependencies": {
+    "firebase": "2.3.1",
+  	"geofire": "3.2.3",
+  	"csvtojson": "0.4.4",
+  	"unzip": "0.1.11",
+  	"rsvp": "3.1.0",
+  	"sleep": "3.0.0"
+  }
+}

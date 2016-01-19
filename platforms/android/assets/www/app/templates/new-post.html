@@ -1,0 +1,255 @@
+<ion-view>
+  <ion-content id="top">
+  	<form name="postCtrl.postForm" novalidate class="list" >
+  		
+  		<div class="item item-divider">
+		    Title:
+		  </div>
+		  <label class="item item-input item-stacked-label">
+		  	<ng-messages
+          for="postCtrl.postForm.title.$error"
+          ng-show="postCtrl.postForm.$submitted">
+          <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+        </ng-messages>
+		    <input 
+		    	name="title" 
+		    	type="text" 
+		    	placeholder="Descriptive title" 
+		    	ng-model="postData.title"
+		    	ng-maxlength="50"
+		    	required>
+		  </label>
+
+		  <div class="item item-divider">
+		    Address:
+		  </div>
+		  <label class="item item-input item-stacked-label">
+		  	<ng-messages
+          for="postCtrl.postForm.street.$error"
+          ng-show="postCtrl.postForm.$submitted">
+          <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+        </ng-messages>
+		    <input
+		    	name="street" 
+		    	type="text" 
+		    	placeholder="Street" 
+		    	ng-model="postData.address.street"
+		    	ng-maxlength="50"
+		    	required>
+		  </label>
+		  <label class="item item-input item-stacked-label">
+		  	<ng-messages
+          for="postCtrl.postForm.city.$error"
+          ng-show="postCtrl.postForm.$submitted">
+          <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+        </ng-messages>
+		  	<input 
+		  		name="city"
+		  		type="text" 
+		  		placeholder="City" 
+		  		ng-model="postData.address.city"
+		  		ng-maxlength="30"
+		  		required>
+		  </label>
+		  <label class="item item-input item-stacked-label">
+		  	<ng-messages
+          for="postCtrl.postForm.state.$error"
+          ng-show="postCtrl.postForm.$submitted">
+          <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+        </ng-messages>
+		  	<input 
+		  		name="state" 
+		  		type="text" 
+		  		placeholder="State" 
+		  		ng-model="postData.address.state"
+		  		ng-maxlength="20" 
+		  		required>
+		  </label>  
+		  <label class="item item-input item-stacked-label">
+		  	<input 
+		  		name="zipcode"
+		  		type="text" 
+		  		placeholder="Zip code" 
+		  		ng-model="postData.address.zip"
+		  		ng-maxlength="5">
+		  </label>
+
+		  <div class="item item-divider">
+		    Rent:
+		  </div>
+		  <label class="item item-input item-stacked-label">
+		  	<ng-messages
+          for="postCtrl.postForm.rent.$error"
+          ng-show="postCtrl.postForm.$submitted">
+          <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+        </ng-messages>
+		    <input 
+		    	name="rent"
+		    	type="number" 
+		    	placeholder="How much?" 
+		    	ng-model="postData.rent"
+		    	ng-maxlength="10" 
+		    	required>
+		  </label>
+
+		  <div class="item item-divider">
+		    Contact Information:
+		  </div>
+		  <label class="item item-input item-stacked-label">
+		  	<ng-messages
+          for="postCtrl.postForm.phone.$error"
+          ng-show="postCtrl.postForm.$submitted">
+          <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+        </ng-messages>
+		    <input 
+		    	name="phone"
+		    	type="tel" 
+		    	placeholder="10 digit phone number. Numbers only." 
+		    	ng-model="postData.contact.phone"
+		    	ng-maxlength="12"
+		    	required>
+		  </label>
+		  <label class="item item-input item-stacked-label">
+		  	<ng-messages
+          for="postCtrl.postForm.email.$error"
+          ng-show="postCtrl.postForm.$submitted">
+          <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+        </ng-messages>
+		    <input 
+		    	name="email"
+		    	type="email" 
+		    	placeholder="Email" 
+		    	ng-model="postData.contact.email"
+		    	ng-maxlength="50"
+		    	required>
+		  </label>
+		  
+		  <div class="item item-divider">
+		    Available Date: (dd/mm/yyyy)
+		  </div>
+		  <label class="item item-input">
+		  	<i class="icon ion-ios-calendar-outline icon-lg"> : </i>
+		  	<ng-messages
+          for="postCtrl.postForm.date.$error"
+          ng-show="postCtrl.postForm.$submitted">
+          <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+        </ng-messages>
+		    <input 
+		    	name="date"
+		    	type="date" 
+		    	ng-model="postData.availableDate"
+		    	required> 
+		  </label>
+		  
+		  <div class="item item-divider">
+		    Type:
+		  </div>
+		 	<ng-messages
+        for="postCtrl.postForm.typeGroup.$error"
+        ng-show="postCtrl.postForm.$submitted">
+        <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+      </ng-messages>
+		  <div class="row">
+			  <label ng-repeat="item in postCtrl.typeList" class="item item-radio col col-20">
+			    <input type="radio" name="typeGroup" ng-model="postData.type" ng-value="item" required>
+			    <div class="item-content">{{item}}</div>
+			  </label>
+		  </div>
+
+
+		  <div class="item item-divider">
+		    Bedrooms:
+		  </div>
+		  <ng-messages
+        for="postCtrl.postForm.bdGroup.$error"
+        ng-show="postCtrl.postForm.$submitted">
+        <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+      </ng-messages>
+		  <div class="row">
+		  	<label ng-repeat="item in postCtrl.bedBathRange" class="item item-radio col col-20">
+			    <input type="radio" name="bdGroup" ng-model="postData.bedrooms" ng-value="item" required>
+			    <div class="item-content">{{item}}</div>
+			  </label>
+		  </div>
+
+		   <div class="item item-divider">
+		    Bathrooms:
+		  </div>
+		  <ng-messages
+        for="postCtrl.postForm.baGroup.$error"
+        ng-show="postCtrl.postForm.$submitted">
+        <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+      </ng-messages>
+		  <div class="row">
+		  	<label ng-repeat="item in postCtrl.bedBathRange" class="item item-radio col col-20">
+			    <input type="radio" name="baGroup" ng-model="postData.bathrooms" ng-value="item" required>
+			    <div class="item-content">{{item}}</div>
+			  </label>
+		  </div>
+
+			<div class="item item-divider">
+		    Description:
+		  </div>
+		  <label class="item item-input item-stacked-label">
+		  	<ng-messages
+	        for="postCtrl.postForm.description.$error"
+	        ng-show="postCtrl.postForm.$submitted">
+	        <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+	      </ng-messages>
+		    <textarea 
+		    	name="description"
+		    	rows="4" 
+		    	placeholder="more details..." 
+		    	ng-model="postData.description"
+		    	ng-maxlength="2000"
+		    	required>
+		    </textarea> 
+		  </label>
+
+		  <div class="item item-divider">
+		    Images: (optional)
+		  </div>
+		  <div class="item">
+		  	<div class="row">
+			  	<div class="col">
+						<button type="button" class="button button-block button-dark" ng-click="getPictureFromAlbum()">
+						 <i class="icon ion-android-image"></i>
+						  UPLOAD
+						</button>
+					</div>
+				  <div class="col">
+				  	<button type="button" class="button button-block button-dark" ng-click="getPicture()">
+				  	 <i class="icon ion-android-camera"></i>
+						  CAMERA
+						</button>
+					</div>
+				</div>
+				<div class="card" ng-repeat="img in postData.images track by $index">
+					<div class="item">
+						<img class="img"  src="{{img}}">
+					</div>
+					<div class="item delete-button" ng-click="postData.images.splice($index,1)">
+						Delete
+					</div>
+				</div>
+		  </div>
+
+
+		  <div class="item item-divider"></div>
+			<div class="row">
+		  	<button type="submit" 
+						 		class="button button-full button-balanced" 
+						 		ng-click="postCtrl.submitPost()"> 
+						 		SUBMIT
+				</button>
+			</div>
+			<div class="row" ng-click="postCtrl.reset(postCtrl.postForm)">
+		  	<button type="reset" class="button button-clear button-full button-assertive">
+		  		RESET
+		  	</button>
+		  </div>
+			
+		</form>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,17 @@
+<ion-modal-view >
+	
+  <ion-header-bar class="slide-box-header">
+    <button class="button button-icon ion-chevron-left button-green" ng-click="detailsCtrl.closeSlideBox()"></button>
+  </ion-header-bar>
+
+  <ion-content scroll="true" class="slide-box-modal">
+
+	  <ion-slide-box on-slide-changed="slideHasChanged($index)" does-continue="true">
+		  <ion-slide ng-repeat="img in selectedPost.images track by $index">
+		    <img class="slide-modal-img" src="{{img}}">
+		  </ion-slide>
+		</ion-slide-box>
+
+  </ion-content>
+</ion-modal-view>
+

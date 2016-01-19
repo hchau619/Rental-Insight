@@ -1,0 +1,150 @@
+<ion-view>
+	<div class="tabs tabs-icon-top tabs-top tabs-striped">
+	  <a class="tab-item" ng-click="scrollTo('details')">
+	    <i class="icon ion-ios-information-outline"></i>
+	    Details
+	  </a>
+	  <a class="tab-item" ng-click="scrollTo('crimes')">
+	    <i class="icon ion-stats-bars"></i>
+	    Crimes
+	  </a>
+	  <a class="tab-item" ng-click="scrollTo('groceries')">
+	    <i class="icon ion-ios-cart-outline"></i>
+	    Groceries
+	  </a>
+	  <a class="tab-item" ng-click="scrollTo('schools')">
+	    <i class="icon ion-university"></i>
+	    Schools
+	  </a>
+	  <a class="tab-item" ng-click="scrollTo('contacts')">
+	    <i class="icon ion-ios-person-outline"></i>
+	    Contacts
+	  </a>
+	</div>
+  <ion-content>
+
+		<div 
+			class="side-box-container" 
+			ng-click="detailsCtrl.showSlideBox()"
+			id="details">
+			<ion-slide-box 
+				on-slide-changed="slideHasChanged($index)" 
+				class="slide-box" 
+				does-continue="true" 
+				auto-play ="true"
+				slide-interval="4000">
+			  <ion-slide ng-repeat="img in selectedPost.images track by $index">
+			    <img class="slide-box-img"  src="{{img}}">
+			  </ion-slide>
+			</ion-slide-box>
+		</div>
+		
+		<div class="list">
+			<div class="row"><div class="col">
+				<h1>{{selectedPost.title}}</h1>
+			</div></div>
+			<div class="row"><div class="col">
+				<h2 class="rent-detail-header">${{selectedPost.rent}}</h2>
+				<p>{{selectedPost.type}}</p>
+				<p>Bed: {{selectedPost.bedrooms}} Bath: {{selectedPost.bathrooms}}</p>
+				<p>Available: {{selectedPost.availableDate}}</p>
+				<p>{{selectedPost.address.street}}</p>
+				<p>{{selectedPost.address.city}}, {{selectedPost.state}} {{selectedPost.address.zip}}</p>
+			</div></div>
+			<div class="row"><div class="col">
+					{{selectedPost.description}}
+			</div></div>
+
+			<div class="card">
+				<div id="streetView" class="detail-street-view"></div>
+			</div>
+		</div>
+		
+		<div class="item item-divider"></div>
+		<div class="list" id="crimes">
+			<div class="row"><div class="col">
+	    	<h1>CRIMES</h1>
+	    </div></div>
+		
+			<!-- <div class="card">
+        <div class="item item-divider">
+            A line chart
+        </div>
+        <div class="item item-text-wrap">
+          <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-options="{showTooltips: false}"></canvas>
+        </div>
+    	</div> -->
+	    <div class="card">
+        <div class="item item-divider">
+          Crimes in last 30 days (1 mile radius)
+        </div>
+        <div class="item item-text-wrap">
+          <canvas id="pie" class="chart chart-pie"
+					  chart-data="pieData" chart-labels="pieLabels" chart-legend="true" chart-options="pieOptions">
+					</canvas> 
+        </div>
+	    </div>
+		</div>
+		
+		<div class="item item-divider"></div>
+		<div class="list" id="groceries">
+			<div class="row"><div class="col">
+				<h1>GROCERIES</h1>
+			</div></div>
+
+			<div class="card">
+				<div id="groceryMap" class="detail-map" data-tap-disabled="true"></div>
+			</div>
+			<div ng-repeat="store in groceryStores track by $index" class="item">
+				<div class="row" ng-click="detailsCtrl.openInAppBrowser(store.mobile_url)">
+					<div class="col col-10">{{labels[$index]}}</div>
+					
+					<div class="col col-50">
+						<h2 class="wrap-text">{{store.name}}</h2>
+						<div><img src="{{store.rating_img_url}}"></div>
+						<div>{{store.review_count}} reviews</div>
+						<div>{{detailsCtrl.meterToMile(store.distance)}} miles</div>
+					</div>
+					<div class="col col-25 ">
+						<img src="{{store.image_url}}">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="item item-divider"></div>
+		<div class="list"  id="schools">
+			<div class="row"><div class="col">
+				<h1>SCHOOLS</h1>
+			</div></div>
+
+			<div class="card">
+				<div id="schoolMap" class="detail-map" data-tap-disabled="true"></div>
+			</div>
+			<div ng-repeat="school in schools track by $index" class="item">
+				<div class="row" ng-click="detailsCtrl.openInAppBrowser(school.mobile_url)">
+					<div class="col col-10">{{labels[$index]}}</div>
+					<div class="col col-50">
+						<h2 class="wrap-text">{{school.name}}</h2>
+						<div><img src="{{school.rating_img_url}}"></div>
+						<div>{{school.review_count}} reviews</div>
+						<div>{{detailsCtrl.meterToMile(school.distance)}} miles</div>
+					</div>
+					<div class="col col-25">
+						<img src="{{school.image_url}}">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="item item-divider"></div>
+		<div class="list" id="contacts">
+			<div class="row"><div class="col">
+				<h1>CONTACTS</h1>
+				<div>Phone: {{selectedPost.contact.phone}}</div>
+				<div>Email: {{selectedPost.contact.email}}</div>
+			</div></div>
+		</div>
+ 
+  </ion-content>
+</ion-view>

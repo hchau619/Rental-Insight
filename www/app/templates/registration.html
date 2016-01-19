@@ -1,0 +1,54 @@
+<ion-modal-view>
+  <ion-header-bar class=" bar-dark-gray">
+    <button class="button button-icon ion-chevron-left button-green" ng-click="appCtrl.closeRegistration()"></button>
+    <h1 class="title">Registration</h1>
+  </ion-header-bar>
+  <ion-content>
+    <form name="appCtrl.registrationForm" ng-submit="appCtrl.createAccount()" novalidate>
+      <div class="list">
+        <label>
+          <ng-messages
+            for="appCtrl.registrationForm.email.$error"
+            ng-show="appCtrl.registrationForm.$submitted">
+            <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+          </ng-messages>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Email:</span>
+          <input 
+            name="email" 
+            type="email" 
+            ng-model="appCtrl.credentials.email" 
+            ng-maxlength="40" 
+            required>
+        </label>
+
+        <label>
+          <ng-messages
+            for="appCtrl.registrationForm.password.$error"
+            ng-show="appCtrl.registrationForm.$submitted">
+            <ng-messages-include src="app/templates/messages.html"></ng-messages-include>
+          </ng-messages>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password:</span>
+          <input 
+            name="password" 
+            type="password" 
+            ng-model="appCtrl.credentials.password" 
+            ng-maxlength="30" 
+            ng-minlength="6" 
+            required>
+        </label>
+        <label class="row">
+          <div class="col">
+            <button class="button button-block button-stable" type="submit">Register</button>
+          </div>
+        </label>
+      </div>
+    </form>
+    <div class="text-center">
+      <a href="#" ng-click="appCtrl.closeRegistration()"> Back to Login</a>
+    </div>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,15 @@
+<ion-modal-view class="modal-peek-bottom">
+  <ion-content  ng-click="appCtrl.closePeek()" scroll="false">
+		<div ng-click="appCtrl.getDetails()">
+			<div class="row peek-container">
+				<div class="col">
+					<div class="float-left rent-header">${{selectedPost.rent}}</div>
+					<div class="float-left subtitle">Bed: {{selectedPost.bedrooms}} </div>
+					<div class="float-left subtitle">Bath: {{selectedPost.bathrooms}}</div>
+					<div class="float-right ">{{selectedPost.address.street}}</div><br>
+					<div class="float-right ">{{selectedPost.address.city}}, {{selectedPost.state}} {{selectedPost.address.zip}}</div>
+				</div>
+			</div>
+		</div>
+  </ion-content>
+</ion-modal-view>

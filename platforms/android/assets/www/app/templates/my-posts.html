@@ -1,0 +1,24 @@
+<ion-view>
+  <ion-content>
+  	<div class="list">
+  		<div class="card" ng-repeat="post in myPosts track by $index" > <!-- n-->
+  			<div class="item item-divider row">
+	  				<div class="col col-10">
+	  					<!-- <i class="ion-edit icon-m float-left"></i> -->
+	  				</div>
+	  				<div class="col text-center">
+	  					<div class="textsize-md">{{post.timestampString}}</div>
+	  				</div>
+	  				<div class="col col-10" >
+	  					<i class=" ion-close-circled icon-m float-right" ng-click="postCtrl.deletePost(post.author, post.key, $index)"></i>
+	  				</div>
+        </div>
+        <div class="item text-ellipsis">
+        	{{post.title}}
+        </div>
+  		</div>
+  			
+  	</div>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,84 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  
+  <ion-side-menu-content class="content-dark-gray">
+     <!-- NAV BAR AREA -->
+    <ion-nav-bar class="bar-dark-gray">
+       <!-- BACK BUTTON -->
+      <ion-nav-back-button class="button-green">
+      </ion-nav-back-button>
+      
+      <ion-nav-title>
+        <div ng-show="!appCtrl.isHome">
+          {{appCtrl.appTitle}}
+        </div>
+        <form name="appCtrl.searchForm" ng-submit="appCtrl.search()" class="item-input search-bar" novalidate ng-show="appCtrl.isHome">
+          <button type="submit" class="button-icon ion-ios-search-strong placeholder-icon"></button>
+          <input type="text" id="search-input" class="search-input" placeholder="City or Zip Code" ng-model="appCtrl.query" required>
+          <button type="button" class="button-icon button-green" ng-click="appCtrl.showSearchFilter()">FILTER</button>
+        </form>
+      </ion-nav-title>
+
+       <!-- MENU BUTTON -->
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-green ion-navicon" menu-toggle="right"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    
+    <!-- Main content loads here -->
+    <ion-nav-view></ion-nav-view>
+  
+  </ion-side-menu-content>
+
+  <!-- Side Menu Area -->
+  <ion-side-menu  enable-menu-with-back-views="true" side="right">
+    <ion-header-bar class="bar-dark-gray text-center">
+     
+    </ion-header-bar>
+    
+    <ion-content scroll="false" class="side-menu-dark-gray">
+      <div class="list">
+
+        <a class="item item-icon-right item-dark-gray textsize-sm" 
+           href="#/app/home" 
+
+           ng-click="appCtrl.initMainMap()" menu-close>
+           <i class="icon ion-home" ></i>
+           HOME
+        </a>
+        <!-- menu-toggle="right" -->
+        <a class="item item-icon-right item-dark-gray textsize-sm" 
+           href="#/app/newpost" 
+           menu-toggle="right"
+           ng-show="appCtrl.auth">
+           <i class="icon ion-compose" ></i>
+           POST
+        </a>
+
+        <a class="item item-icon-right item-dark-gray textsize-sm" 
+           href="#/app/myposts"
+           menu-toggle="right"
+           ng-show="appCtrl.auth"
+           ng-click="appCtrl.getMyPosts()">
+           <i class="icon ion-filing" ></i>
+           MY POSTS
+        </a>
+
+        <a class="item item-icon-right item-dark-gray textsize-sm" 
+           ng-click="appCtrl.showLogin()" 
+           menu-toggle="right"
+           ng-show="!appCtrl.auth">
+           <i class="icon ion-log-in"></i>
+           LOGIN
+        </a>
+        
+        <a class="item item-icon-right item-dark-gray textsize-sm" 
+           ng-click="appCtrl.doLogout()"
+           ng-show="appCtrl.auth" menu-close>
+           <i class="icon ion-log-out" ></i>
+           LOGOUT
+        </a>
+
+      </div>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

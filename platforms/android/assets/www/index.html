@@ -1,0 +1,63 @@
+<!-- 
+Rental-Insight v0.0.1
+Author: Hung Chau
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/angular-chart/dist/angular-chart.css" rel="stylesheet"></script>
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/cordova/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+  </head>
+
+  <body ng-app="rentalinsight" class="platform-android platform-cordova platform-webview">
+
+    <!-- App templates are rendered here --> 
+    <ion-nav-view></ion-nav-view>
+
+    <!-- App dependencies -->
+    <script src="lib/rsvp/rsvp.min.js"></script> <!-- Need for GeoFire -->
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/angularfire/dist/angularfire.min.js"></script>
+    <script src="lib/geofire/dist/geofire.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGrvHgFdaISpsPyStDc5EbmcUKPAIh4mM&libraries=visualization">
+    </script>
+    <script src="lib/Chart.js-master/Chart.min.js"></script>
+    <script src="lib/angular-chart/dist/angular-chart.min.js"></script>
+    <script src="lib/oauth-signature/dist/oauth-signature.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+
+    <!-- App -->
+    <script src="app/app.js"></script>
+
+    <script src="app/controllers/init-controllers.js"></script>
+    <script src="app/controllers/app-controller.js"></script>
+    <script src="app/controllers/post-controller.js"></script>
+    <script src="app/controllers/details-controller.js"></script>
+
+    <script src="app/models/init-models.js"></script>
+    <script src="app/models/account-model.js"></script>
+    <script src="app/models/post-model.js"></script>
+    <script src="app/models/crime-model.js"></script>
+    <script src="app/models/grocery-model.js"></script>
+    <script src="app/models/school-model.js"></script>
+
+    <script src="app/services/init-services.js"></script>
+    <script src="app/services/session-service.js"></script>
+    <script src="app/services/camera-service.js"></script>
+    <script src="app/services/map-service.js"></script>
+    <script src="app/services/yelp-service.js"></script>
+  
+  </body>
+</html>
